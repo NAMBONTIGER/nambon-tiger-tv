@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Nambon Tiger TV: your daily plug for content on WhatsApp.">
+<meta name="theme-color" content="#0b0b0b">
+<title>Nambon Tiger TV | Your daily plug for content on WhatsApp</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0b0b0b;
+    --panel: #161616;
+    --line: #262626;
+    --text: #f5f5f5;
+    --muted: #a3a3a3;
+    --orange: #ff7a1a;
+    --orange-dark: #e35d00;
+    --wa: #25d366;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  .wrap { width: 100%; max-width: 960px; margin: 0 auto; padding: 0 20px; }
+  section { padding: 56px 0; border-top: 1px solid var(--line); }
+  h1, h2, h3 { line-height: 1.15; font-weight: 800; letter-spacing: -0.02em; }
+  h2 { font-size: 1.9rem; margin-bottom: 14px; }
+  h2 span { color: var(--orange); }
+  p + p { margin-top: 12px; }
+  .lead { color: var(--muted); font-size: 1.05rem; }
+  .eyebrow {
+    display: inline-block; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.14em; color: var(--orange); margin-bottom: 12px;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-block; padding: 16px 28px; border-radius: 999px; font-weight: 700;
+    text-decoration: none; font-size: 1rem; text-align: center; transition: transform .15s, background .15s;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-primary { background: var(--orange); color: #0b0b0b; box-shadow: 0 10px 30px rgba(255,122,26,.35); }
+  .btn-primary:hover { background: var(--orange-dark); }
+  .btn-wa { background: var(--wa); color: #05210f; }
+  .btn-ghost { border: 2px solid var(--line); color: var(--text); }
+  .btn-ghost:hover { border-color: var(--orange); }
+
+  /* Hero */
+  .hero {
+    border-top: none; padding: 72px 0 64px;
+    background:
+      radial-gradient(circle at 80% 0%, rgba(255,122,26,.25), transparent 55%),
+      radial-gradient(circle at 0% 100%, rgba(255,122,26,.12), transparent 50%),
+      var(--bg);
+  }
+  .badge {
+    display: inline-block; background: rgba(255,122,26,.12); color: var(--orange);
+    border: 1px solid rgba(255,122,26,.35); padding: 6px 14px; border-radius: 999px;
+    font-size: 0.8rem; font-weight: 700; margin-bottom: 22px;
+  }
+  .hero h1 { font-size: clamp(2.6rem, 9vw, 4.8rem); }
+  .hero h1 .tiger { color: var(--orange); }
+  .tagline { font-size: clamp(1.15rem, 3.5vw, 1.5rem); color: var(--text); margin: 18px 0 30px; font-weight: 600; }
+  .hero-actions { display: flex; flex-direction: column; gap: 12px; }
+
+  /* Cards */
+  .grid { display: grid; gap: 16px; grid-template-columns: 1fr; margin-top: 28px; }
+  .card {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 24px;
+  }
+  .card .icon { font-size: 1.6rem; margin-bottom: 10px; }
+  .card h3 { font-size: 1.1rem; margin-bottom: 6px; }
+  .card p { color: var(--muted); font-size: 0.95rem; }
+
+  .promo {
+    background: linear-gradient(135deg, #1c1208 0%, #161616 60%);
+    border: 1px dashed rgba(255,122,26,.5); border-radius: 20px; padding: 32px 24px;
+  }
+  .status {
+    display: inline-block; background: var(--orange); color: #0b0b0b; font-weight: 800;
+    font-size: 0.75rem; padding: 5px 12px; border-radius: 6px; text-transform: uppercase; letter-spacing: .08em;
+    margin-bottom: 16px;
+  }
+  .slots { display: grid; gap: 12px; margin-top: 22px; grid-template-columns: 1fr; }
+  .slot {
+    border: 1px solid var(--line); border-radius: 12px; padding: 16px; color: var(--muted);
+    display: flex; justify-content: space-between; align-items: center; font-size: .95rem;
+  }
+  .slot strong { color: var(--text); }
+
+  .contact-box { text-align: center; }
+  .contact-box p { color: var(--muted); margin-bottom: 24px; }
+  .handle { color: var(--orange); font-weight: 700; }
+
+  footer { border-top: 1px solid var(--line); padding: 28px 0 40px; color: var(--muted); font-size: .85rem; text-align: center; }
+  .socials { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+
+  /* Tablet and up */
+  @media (min-width: 640px) {
+    .hero-actions { flex-direction: row; flex-wrap: wrap; }
+    .grid { grid-template-columns: repeat(2, 1fr); }
+    .slots { grid-template-columns: repeat(2, 1fr); }
+    h2 { font-size: 2.3rem; }
+    section { padding: 72px 0; }
+    .promo { padding: 44px 40px; }
+  }
+  @media (min-width: 960px) {
+    .grid.three { grid-template-columns: repeat(3, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="badge">Live on WhatsApp</span>
+    <h1>Nambon <span class="tiger">Tiger</span> TV</h1>
+    <p class="tagline">your daily plug for content on WhatsApp</p>
+    <p class="lead">Fresh posts, real updates and the content you actually want to see, delivered straight to your WhatsApp. No app to download, no algorithm to fight.</p>
+    <div class="hero-actions" style="margin-top: 32px;">
+      <a class="btn btn-primary" href="https://whatsapp.com/channel/0029VanRNCN2ER6nMVpUEz0x" target="_blank" rel="noopener">Join the channel</a>
+      <a class="btn btn-ghost" href="#about">Learn more</a>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <span class="eyebrow">About the channel</span>
+    <h2>Your daily <span>plug</span>.</h2>
+    <p class="lead">Nambon Tiger TV is a WhatsApp channel built to keep you informed and entertained every day. We curate the best of what is happening, put it in one place, and send it to you without the noise.</p>
+    <p class="lead">Join once and it lands in your chats. Short, clean, and made for the way Nigerians already use their phones.</p>
+  </div>
+</section>
+
+<section id="content">
+  <div class="wrap">
+    <span class="eyebrow">What we post</span>
+    <h2>Content that <span>hits</span>.</h2>
+    <p class="lead">Here is what you will find on the channel.</p>
+    <div class="grid three">
+      <div class="card">
+        <div class="icon">🔥</div>
+        <h3>Trending now</h3>
+        <p>What is buzzing today, explained quickly so you are never the last to know.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🎬</div>
+        <h3>Entertainment</h3>
+        <p>Music, clips, and fun picks to start or end your day.</p>
+      </div>
+      <div class="card">
+        <div class="icon">📣</div>
+        <h3>Updates and news</h3>
+        <p>Useful, timely updates that matter to you, posted daily.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="promo">
+  <div class="wrap">
+    <div class="promo">
+      <span class="status">Coming soon</span>
+      <h2>Advertise with <span>us</span>.</h2>
+      <p class="lead">Our audience is growing every day. Ad slots on Nambon Tiger TV are coming soon. If you want your brand in front of an engaged WhatsApp audience, get in touch and we will share details when slots open.</p>
+      <div class="slots">
+        <div class="slot"><strong>Sponsored post</strong><span>Coming soon</span></div>
+        <div class="slot"><strong>Shoutout</strong><span>Coming soon</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap contact-box">
+    <span class="eyebrow">Contact</span>
+    <h2>Say <span>hello</span>.</h2>
+    <p>Questions, feedback, or partnership enquiries? Message us on WhatsApp.</p>
+    <a class="btn btn-wa" href="https://whatsapp.com/channel/0029VanRNCN2ER6nMVpUEz0x" target="_blank" rel="noopener">Chat with us on WhatsApp</a>
+  </div>
+</section>
+
+<section id="socials">
+  <h2>Follow Nambon Tiger</h2>
+  <p>Catch us everywhere.</p>
+  <div class="socials">
+    <a class="btn btn-wa" href="https://whatsapp.com/channel/0029VanRNCN2ER6nMVpUEz0x" target="_blank" rel="noopener">WhatsApp Channel</a>
+    <a class="btn btn-ghost" href="https://www.tiktok.com/@nnajioluebubechuk" target="_blank" rel="noopener">TikTok</a>
+    <a class="btn btn-ghost" href="https://www.instagram.com/nambontiger" target="_blank" rel="noopener">Instagram</a>
+    <a class="btn btn-ghost" href="https://youtube.com/@nnajioluebubechukwu" target="_blank" rel="noopener">YouTube</a>
+    <a class="btn btn-ghost" href="https://x.com/tigernambon" target="_blank" rel="noopener">X (Twitter)</a>
+  </div>
+</section>
+<footer>
+  <div class="wrap">
+    <p>&copy; 2026 Nambon Tiger TV. Your daily plug for content on WhatsApp.</p>
+  </div>
+</footer>
+
+</body>
+</html>
