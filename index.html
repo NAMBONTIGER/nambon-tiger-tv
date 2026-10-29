@@ -1,208 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Nambon Tiger TV: your daily plug for content on WhatsApp.">
-<meta name="theme-color" content="#0b0b0b">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Nambon Tiger TV: your daily plug for content on WhatsApp."><meta name="theme-color" content="#0b0b0b">
 <title>Nambon Tiger TV | Your daily plug for content on WhatsApp</title>
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --bg: #0b0b0b;
-    --panel: #161616;
-    --line: #262626;
-    --text: #f5f5f5;
-    --muted: #a3a3a3;
-    --orange: #ff7a1a;
-    --orange-dark: #e35d00;
-    --wa: #25d366;
-  }
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-  }
-  a { color: inherit; }
-  .wrap { width: 100%; max-width: 960px; margin: 0 auto; padding: 0 20px; }
-  section { padding: 56px 0; border-top: 1px solid var(--line); }
-  h1, h2, h3 { line-height: 1.15; font-weight: 800; letter-spacing: -0.02em; }
-  h2 { font-size: 1.9rem; margin-bottom: 14px; }
-  h2 span { color: var(--orange); }
-  p + p { margin-top: 12px; }
-  .lead { color: var(--muted); font-size: 1.05rem; }
-  .eyebrow {
-    display: inline-block; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
-    letter-spacing: 0.14em; color: var(--orange); margin-bottom: 12px;
-  }
-
-  /* Buttons */
-  .btn {
-    display: inline-block; padding: 16px 28px; border-radius: 999px; font-weight: 700;
-    text-decoration: none; font-size: 1rem; text-align: center; transition: transform .15s, background .15s;
-  }
-  .btn:hover { transform: translateY(-2px); }
-  .btn-primary { background: var(--orange); color: #0b0b0b; box-shadow: 0 10px 30px rgba(255,122,26,.35); }
-  .btn-primary:hover { background: var(--orange-dark); }
-  .btn-wa { background: var(--wa); color: #05210f; }
-  .btn-ghost { border: 2px solid var(--line); color: var(--text); }
-  .btn-ghost:hover { border-color: var(--orange); }
-
-  /* Hero */
-  .hero {
-    border-top: none; padding: 72px 0 64px;
-    background:
-      radial-gradient(circle at 80% 0%, rgba(255,122,26,.25), transparent 55%),
-      radial-gradient(circle at 0% 100%, rgba(255,122,26,.12), transparent 50%),
-      var(--bg);
-  }
-  .badge {
-    display: inline-block; background: rgba(255,122,26,.12); color: var(--orange);
-    border: 1px solid rgba(255,122,26,.35); padding: 6px 14px; border-radius: 999px;
-    font-size: 0.8rem; font-weight: 700; margin-bottom: 22px;
-  }
-  .hero h1 { font-size: clamp(2.6rem, 9vw, 4.8rem); }
-  .hero h1 .tiger { color: var(--orange); }
-  .tagline { font-size: clamp(1.15rem, 3.5vw, 1.5rem); color: var(--text); margin: 18px 0 30px; font-weight: 600; }
-  .hero-actions { display: flex; flex-direction: column; gap: 12px; }
-
-  /* Cards */
-  .grid { display: grid; gap: 16px; grid-template-columns: 1fr; margin-top: 28px; }
-  .card {
-    background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 24px;
-  }
-  .card .icon { font-size: 1.6rem; margin-bottom: 10px; }
-  .card h3 { font-size: 1.1rem; margin-bottom: 6px; }
-  .card p { color: var(--muted); font-size: 0.95rem; }
-
-  .promo {
-    background: linear-gradient(135deg, #1c1208 0%, #161616 60%);
-    border: 1px dashed rgba(255,122,26,.5); border-radius: 20px; padding: 32px 24px;
-  }
-  .status {
-    display: inline-block; background: var(--orange); color: #0b0b0b; font-weight: 800;
-    font-size: 0.75rem; padding: 5px 12px; border-radius: 6px; text-transform: uppercase; letter-spacing: .08em;
-    margin-bottom: 16px;
-  }
-  .slots { display: grid; gap: 12px; margin-top: 22px; grid-template-columns: 1fr; }
-  .slot {
-    border: 1px solid var(--line); border-radius: 12px; padding: 16px; color: var(--muted);
-    display: flex; justify-content: space-between; align-items: center; font-size: .95rem;
-  }
-  .slot strong { color: var(--text); }
-
-  .contact-box { text-align: center; }
-  .contact-box p { color: var(--muted); margin-bottom: 24px; }
-  .handle { color: var(--orange); font-weight: 700; }
-
-  footer { border-top: 1px solid var(--line); padding: 28px 0 40px; color: var(--muted); font-size: .85rem; text-align: center; }
-  .socials { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
-
-  /* Tablet and up */
-  @media (min-width: 640px) {
-    .hero-actions { flex-direction: row; flex-wrap: wrap; }
-    .grid { grid-template-columns: repeat(2, 1fr); }
-    .slots { grid-template-columns: repeat(2, 1fr); }
-    h2 { font-size: 2.3rem; }
-    section { padding: 72px 0; }
-    .promo { padding: 44px 40px; }
-  }
-  @media (min-width: 960px) {
-    .grid.three { grid-template-columns: repeat(3, 1fr); }
-  }
+*{box-sizing:border-box;margin:0;padding:0}:root{--bg:#0b0b0b;--panel:#161616;--line:#262626;--text:#f5f5f5;--muted:#a3a3a3;--orange:#ff7a1a;--orange-dark:#e35d00;--wa:#25d366}html{scroll-behavior:smooth}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}a{color:inherit}.wrap{width:100%;max-width:960px;margin:0 auto;padding:0 20px}section{padding:56px 0;border-top:1px solid var(--line)}h1,h2,h3{line-height:1.15;font-weight:800;letter-spacing:-.02em}h2{font-size:1.9rem;margin-bottom:14px}h2 span{color:var(--orange)}p+p{margin-top:12px}.lead{color:var(--muted);font-size:1.05rem}.eyebrow{display:inline-block;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--orange);margin-bottom:12px}.btn{display:inline-block;padding:14px 22px;border-radius:999px;font-weight:700;text-decoration:none;font-size:1rem;text-align:center;transition:transform .15s,background .15s;border:0;cursor:pointer}.btn:hover{transform:translateY(-2px)}.btn-primary{background:var(--orange);color:#0b0b0b;box-shadow:0 10px 30px rgba(255,122,26,.25)}.btn-primary:hover{background:var(--orange-dark)}.btn-wa{background:var(--wa);color:#05210f}.btn-ghost{border:2px solid var(--line);color:var(--text);background:transparent}.btn-ghost:hover{border-color:var(--orange)}.hero{border-top:none;padding:72px 0 64px;background:radial-gradient(circle at 80% 0%,rgba(255,122,26,.25),transparent 55%),radial-gradient(circle at 0% 100%,rgba(255,122,26,.12),transparent 50%),var(--bg)}.badge{display:inline-block;background:rgba(255,122,26,.12);color:var(--orange);border:1px solid rgba(255,122,26,.35);padding:6px 14px;border-radius:999px;font-size:.8rem;font-weight:700;margin-bottom:22px}.hero h1{font-size:clamp(2.6rem,9vw,4.8rem)}.hero h1 .tiger{color:var(--orange)}.tagline{font-size:clamp(1.15rem,3.5vw,1.5rem);margin:18px 0 30px;font-weight:600}.hero-actions{display:flex;flex-direction:column;gap:12px}.grid{display:grid;gap:16px;grid-template-columns:1fr;margin-top:28px}.card,.form-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px}.card .icon{font-size:1.6rem;margin-bottom:10px}.card h3{font-size:1.1rem;margin-bottom:6px}.card p,.muted{color:var(--muted);font-size:.95rem}.promo{background:linear-gradient(135deg,#1c1208 0%,#161616 60%);border:1px dashed rgba(255,122,26,.5);border-radius:20px;padding:28px 20px}.status{display:inline-block;background:var(--orange);color:#0b0b0b;font-weight:800;font-size:.75rem;padding:5px 12px;border-radius:6px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:16px}.slots{display:grid;gap:12px;margin-top:22px;grid-template-columns:1fr}.slot{border:1px solid var(--line);border-radius:12px;padding:16px;color:var(--muted);display:flex;justify-content:space-between;gap:12px;align-items:center;font-size:.95rem}.slot strong{color:var(--text)}.form-grid{display:grid;gap:14px;margin-top:20px}.field{display:grid;gap:7px}.field label{font-weight:650;font-size:.94rem}.field input,.field textarea,.field select{width:100%;border:1px solid #3a3a3a;border-radius:10px;background:#101010;color:var(--text);padding:13px 14px;font:inherit}.field textarea{min-height:120px;resize:vertical}.field input:focus,.field textarea:focus,.field select:focus{outline:2px solid var(--orange);border-color:transparent}.help{font-size:.87rem;color:var(--muted)}.form-card{margin-top:24px}.notice{margin-top:16px;padding:14px;border-radius:10px;background:#191919;color:var(--muted);font-size:.92rem}.notice.good{border:1px solid #286d42;color:#c5f5d3}.notice.bad{border:1px solid #8b3a2b;color:#ffd0c7}.contact-box{text-align:center}.contact-box>p{color:var(--muted);margin-bottom:20px}.socials{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:24px}footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);font-size:.85rem;text-align:center}.counter{display:inline-flex;align-items:center;gap:10px;margin:18px 0 0;padding:10px 15px;border:1px solid var(--line);border-radius:999px;background:#141414;color:var(--muted);font-size:.9rem}.counter strong{color:var(--orange);font-size:1.1rem}.admin-link{color:var(--muted);background:none;border:0;text-decoration:underline;cursor:pointer;font:inherit;margin-top:14px}.admin-panel{margin:18px auto 0;text-align:left;max-width:780px}.admin-item{padding:16px;border:1px solid var(--line);border-radius:12px;margin:12px 0;background:#111}.admin-item h4{margin-bottom:6px}.admin-item p{color:var(--muted);white-space:pre-wrap;overflow-wrap:anywhere}.admin-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.hidden{display:none!important}.ad-live{display:grid;gap:12px;margin-top:22px}.ad-live .card{padding:18px}.ad-live a{color:var(--orange);overflow-wrap:anywhere}
+@media(min-width:640px){.hero-actions{flex-direction:row;flex-wrap:wrap}.grid{grid-template-columns:repeat(2,1fr)}.grid.three{grid-template-columns:repeat(3,1fr)}.slots{grid-template-columns:repeat(2,1fr)}h2{font-size:2.3rem}section{padding:72px 0}.promo{padding:44px 40px}.form-grid.two{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
-
-<header class="hero">
-  <div class="wrap">
-    <span class="badge">Live on WhatsApp</span>
-    <h1>Nambon <span class="tiger">Tiger</span> TV</h1>
-    <p class="tagline">your daily plug for content on WhatsApp</p>
-    <p class="lead">Fresh posts, real updates and the content you actually want to see, delivered straight to your WhatsApp. No app to download, no algorithm to fight.</p>
-    <div class="hero-actions" style="margin-top: 32px;">
-      <a class="btn btn-primary" href="https://whatsapp.com/channel/0029VanRNCN2ER6nMVpUEz0x" target="_blank" rel="noopener">Join the channel</a>
-      <a class="btn btn-ghost" href="#about">Learn more</a>
-    </div>
-  </div>
-</header>
-
-<section id="about">
-  <div class="wrap">
-    <span class="eyebrow">About the channel</span>
-    <h2>Your daily <span>plug</span>.</h2>
-    <p class="lead">Nambon Tiger TV is a WhatsApp channel built to keep you informed and entertained every day. We curate the best of what is happening, put it in one place, and send it to you without the noise.</p>
-    <p class="lead">Join once and it lands in your chats. Short, clean, and made for the way Nigerians already use their phones.</p>
-  </div>
-</section>
-
-<section id="content">
-  <div class="wrap">
-    <span class="eyebrow">What we post</span>
-    <h2>Content that <span>hits</span>.</h2>
-    <p class="lead">Here is what you will find on the channel.</p>
-    <div class="grid three">
-      <div class="card">
-        <div class="icon">🔥</div>
-        <h3>Trending now</h3>
-        <p>What is buzzing today, explained quickly so you are never the last to know.</p>
-      </div>
-      <div class="card">
-        <div class="icon">🎬</div>
-        <h3>Entertainment</h3>
-        <p>Music, clips, and fun picks to start or end your day.</p>
-      </div>
-      <div class="card">
-        <div class="icon">📣</div>
-        <h3>Updates and news</h3>
-        <p>Useful, timely updates that matter to you, posted daily.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="promo">
-  <div class="wrap">
-    <div class="promo">
-      <span class="status">Coming soon</span>
-      <h2>Advertise with <span>us</span>.</h2>
-      <p class="lead">Our audience is growing every day. Ad slots on Nambon Tiger TV are coming soon. If you want your brand in front of an engaged WhatsApp audience, get in touch and we will share details when slots open.</p>
-      <div class="slots">
-        <div class="slot"><strong>Sponsored post</strong><span>Coming soon</span></div>
-        <div class="slot"><strong>Shoutout</strong><span>Coming soon</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="wrap contact-box">
-    <span class="eyebrow">Contact</span>
-    <h2>Say <span>hello</span>.</h2>
-    <p>Questions, feedback, or partnership enquiries? Message us on WhatsApp.</p>
-    <a class="btn btn-wa" href="https://whatsapp.com/channel/0029VanRNCN2ER6nMVpUEz0x" target="_blank" rel="noopener">Chat with us on WhatsApp</a>
-  </div>
-</section>
-
-<section id="socials">
-  <h2>Follow Nambon Tiger</h2>
-  <p>Catch us everywhere.</p>
-  <div class="socials">
-    <a class="btn btn-wa" href="https://whatsapp.com/channel/0029VanRNCN2ER6nMVpUEz0x" target="_blank" rel="noopener">WhatsApp Channel</a>
-    <a class="btn btn-ghost" href="https://www.tiktok.com/@nnajioluebubechuk" target="_blank" rel="noopener">TikTok</a>
-    <a class="btn btn-ghost" href="https://www.instagram.com/nambontiger" target="_blank" rel="noopener">Instagram</a>
-    <a class="btn btn-ghost" href="https://youtube.com/@nnajioluebubechukwu" target="_blank" rel="noopener">YouTube</a>
-    <a class="btn btn-ghost" href="https://x.com/tigernambon" target="_blank" rel="noopener">X (Twitter)</a>
-  </div>
-</section>
-<footer>
-  <div class="wrap">
-    <p>&copy; 2026 Nambon Tiger TV. Your daily plug for content on WhatsApp.</p>
-  </div>
-</footer>
-
-</body>
-</html>
+<header class="hero"><div class="wrap"><span class="badge">Live on WhatsApp</span><h1>Nambon <span class="tiger">Tiger</span> TV</h1><p class="tagline">your daily plug for content on WhatsApp</p><p class="lead">Fresh posts, real updates and the content you actually want to see, delivered straight to your WhatsApp. No app to download, no algorithm to fight.</p><div class="hero-actions" style="margin-top:32px"><a class="btn btn-primary" href="https://whatsapp.com/channel/0029VanRNCN2ER6nMVpUEz0x" target="_blank" rel="noopener">Join the channel</a><a class="btn btn-ghost" href="#about">Learn more</a></div><div class="counter" aria-live="polite">👥 <span>Channel followers</span> <strong id="followerCount">102</strong></div></div></header>
+<section id="about"><div class="wrap"><span class="eyebrow">About the channel</span><h2>Your daily <span>plug</span>.</h2><p class="lead">Nambon Tiger TV is a WhatsApp channel built to keep you informed and entertained every day. We curate the best of what is happening, put it in one place, and send it to you without the noise.</p><p class="lead">Join once and it lands in your chats. Short, clean, and made for the way Nigerians already use their phones.</p></div></section>
+<section id="content"><div class="wrap"><span class="eyebrow">What we post</span><h2>Content that <span>hits</span>.</h2><p class="lead">Here is what you will find on the channel.</p><div class="grid three"><div class="card"><div class="icon">🔥</div><h3>Trending now</h3><p>What is buzzing today, explained quickly so you are never the last to know.</p></div><div class="card"><div class="icon">🎬</div><h3>Entertainment</h3><p>Music, clips, and fun picks to start or end your day.</p></div><div class="card"><div class="icon">📣</div><h3>Updates and news</h3><p>Useful, timely updates that matter to you, posted daily.</p></div></div></div></section>
+<section id="promo"><div class="wrap"><div class="promo"><span class="status">Owner approval required</span><h2>Advertise with <span>us</span>.</h2><p class="lead">Send your ad for review. Nothing is published until the owner approves it. Choose a package and leave a way for us to reach you. Payment is by bank transfer only, after approval.</p><div class="slots"><div class="slot"><strong>Sponsored post</strong><span>Review first</span></div><div class="slot"><strong>Shoutout</strong><span>Review first</span></div></div><form id="adForm" class="form-card"><div class="form-grid two"><div class="field"><label for="adName">Your name or business</label><input id="adName" name="name" maxlength="100" required></div><div class="field"><label for="adContact">WhatsApp or email for reply</label><input id="adContact" name="contact" maxlength="160" required></div></div><div class="form-grid"><div class="field"><label for="adContent">Ad content</label><textarea id="adContent" name="content" maxlength="2000" required placeholder="Describe the advert you want us to publish"></textarea></div><div class="field"><label for="adLink">Link to include (optional)</label><input id="adLink" name="link" type="url" maxlength="500" placeholder="https://..."></div><div class="field"><label for="adPackage">Price package</label><select id="adPackage" name="package" required><option value="">Choose a package</option><option>Sponsored post</option><option>Shoutout</option><option>Post + shoutout</option></select><span class="help">We will confirm the price and payment details after reviewing your request. Please do not transfer money before approval.</span></div><button class="btn btn-primary" type="submit">Submit ad for review</button></div><div id="adMessage" class="notice hidden" role="status"></div><p class="help" style="margin-top:12px">After approval, we will send the confirmed amount and bank-transfer instructions directly using the contact you provided. Ads go live only after approval and payment are confirmed.</p></form><div id="liveAds" class="ad-live" aria-live="polite"></div></div></div></section>
+<section id="contact"><div class="wrap"><div class="contact-box"><span class="eyebrow">Contact</span><h2>Say <span>hello</span>.</h2><p>Send a message using the form, or chat with us on WhatsApp.</p><a class="btn btn-wa" href="https://whatsapp.com/channel/0029VanRNCN2ER6nMVpUEz0x" target="_blank" rel="noopener">Chat with us on WhatsApp</a></div><form id="contactForm" class="form-card"><div class="form-grid two"><div class="field"><label for="contactName">Your name</label><input id="contactName" name="name" maxlength="100" required></div><div class="field"><label for="contactReply">Email or WhatsApp (optional)</label><input id="contactReply" name="reply" maxlength="160"></div></div><div class="form-grid"><div class="field"><label for="contactText">Message</label><textarea id="contactText" name="message" maxlength="3000" required></textarea></div><button class="btn btn-primary" type="submit">Send message</button></div><div id="contactMessage" class="notice hidden" role="status"></div></form></div></section>
+<section id="socials"><div class="wrap" style="text-align:center"><h2>Follow Nambon Tiger</h2><p class="lead">Catch us everywhere.</p><div class="socials"><a class="btn btn-wa" href="https://whatsapp.com/channel/0029VanRNCN2ER6nMVpUEz0x" target="_blank" rel="noopener">WhatsApp Channel</a><a class="btn btn-ghost" href="https://www.tiktok.com/@nnajioluebubechuk" target="_blank" rel="noopener">TikTok</a><a class="btn btn-ghost" href="https://www.instagram.com/nambontiger" target="_blank" rel="noopener">Instagram</a><a class="btn btn-ghost" href="https://youtube.com/@nnajioluebubechukwu" target="_blank" rel="noopener">YouTube</a><a class="btn btn-ghost" href="https://x.com/tigernambon" target="_blank" rel="noopener">X (Twitter)</a></div><button class="admin-link" id="adminToggle" type="button">Owner admin</button><div id="adminPanel" class="admin-panel hidden"></div></div></section>
+<footer><div class="wrap"><p>&copy; 2026 Nambon Tiger TV. Your daily plug for content on WhatsApp.</p></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+(()=>{'use strict';
+const CONFIG_KEY='nttv_supabase_config';let sb=null;const $=id=>document.getElementById(id);
+function message(el,text,kind){el.textContent=text;el.className='notice'+(kind?' '+kind:'')}
+function config(){try{return JSON.parse(localStorage.getItem(CONFIG_KEY)||'{}')}catch{return {}}}
+function init(){const c=config();if(window.supabase&&c.url&&c.key){try{sb=window.supabase.createClient(c.url,c.key)}catch(e){sb=null}}}
+async function loadPublic(){if(!sb)return;try{const {data,error}=await sb.from('site_stats').select('followers').eq('id',1).single();if(!error&&data&&Number.isFinite(Number(data.followers)))$('followerCount').textContent=Number(data.followers).toLocaleString()}catch{};try{const {data}=await sb.from('advertisements').select('name,content,link,package').eq('status','approved').order('created_at',{ascending:false}).limit(12);const host=$('liveAds');host.replaceChildren();(data||[]).forEach(ad=>{const card=document.createElement('article');card.className='card';const title=document.createElement('h3');title.textContent=ad.name;const copy=document.createElement('p');copy.textContent=ad.content;card.append(title,copy);if(ad.link){const a=document.createElement('a');a.href=ad.link;a.target='_blank';a.rel='noopener noreferrer';a.textContent='Visit link';card.append(a)}host.append(card)})}catch{}}
+function setStatus(id,text,kind){message($(id),text,kind)}
+$('contactForm').addEventListener('submit',async e=>{e.preventDefault();if(!sb){setStatus('contactMessage','Backend is not connected yet. The form was not sent.','bad');return}const f=new FormData(e.currentTarget);const {error}=await sb.from('contact_messages').insert({name:f.get('name').trim(),reply_to:f.get('reply').trim()||null,message:f.get('message').trim()});if(error){setStatus('contactMessage','Could not save your message. Please try again later.','bad');return}e.currentTarget.reset();setStatus('contactMessage','Message received. Thank you!','good')});
+$('adForm').addEventListener('submit',async e=>{e.preventDefault();if(!sb){setStatus('adMessage','Backend is not connected yet. Your request was not sent.','bad');return}const f=new FormData(e.currentTarget);const link=(f.get('link')||'').trim();if(link&&!/^https:\/\//i.test(link)){setStatus('adMessage','Please use a secure https:// link.','bad');return}const {error}=await sb.from('advertisements').insert({name:f.get('name').trim(),contact:f.get('contact').trim(),content:f.get('content').trim(),link:link||null,package:f.get('package'),status:'pending'});if(error){setStatus('adMessage','Could not save your request. Please try again later.','bad');return}e.currentTarget.reset();setStatus('adMessage','Request submitted for owner review. Do not pay yet. If approved, we will contact you with the price and bank-transfer details.','good')});
+const esc=(tag,text,cls)=>{const x=document.createElement(tag);x.textContent=text;if(cls)x.className=cls;return x};
+async function adminView(){const p=$('adminPanel');p.replaceChildren();p.classList.remove('hidden');if(!sb){p.append(esc('p','Backend setup is required before owner login can work. Owner setup details are in README.md and supabase-schema.sql.','notice'));return}const {data:{session}}=await sb.auth.getSession();if(!session){const form=document.createElement('form');form.className='form-card form-grid';form.innerHTML='<div class="field"><label for="adminEmail">Owner email</label><input id="adminEmail" type="email" autocomplete="username" required></div><div class="field"><label for="adminPassword">Password</label><input id="adminPassword" type="password" autocomplete="current-password" required></div><button class="btn btn-primary" type="submit">Log in</button>';const status=esc('div','','notice hidden');form.addEventListener('submit',async e=>{e.preventDefault();const {error}=await sb.auth.signInWithPassword({email:$('adminEmail').value,password:$('adminPassword').value});if(error){message(status,'Login failed. Check your credentials and owner access.','bad')}else await adminView()});p.append(form,status);return}
+const {data:allowed,error:roleErr}=await sb.from('admin_users').select('user_id').eq('user_id',session.user.id).maybeSingle();if(roleErr||!allowed){await sb.auth.signOut();p.append(esc('p','This account is not authorized as a site owner.','notice bad'));return}
+const top=document.createElement('div');top.className='form-card';top.append(esc('h3','Owner dashboard'));const logout=document.createElement('button');logout.className='btn btn-ghost';logout.textContent='Log out';logout.addEventListener('click',async()=>{await sb.auth.signOut();await adminView()});top.append(logout);const statForm=document.createElement('form');statForm.className='form-grid';statForm.innerHTML='<div class="field"><label for="newFollowers">WhatsApp channel followers</label><input id="newFollowers" type="number" min="0" max="999999999" required></div><button class="btn btn-primary" type="submit">Update follower count</button>';const statMsg=esc('div','','notice hidden');statForm.addEventListener('submit',async e=>{e.preventDefault();const n=Number($('newFollowers').value);const {error}=await sb.from('site_stats').upsert({id:1,followers:n},{onConflict:'id'});if(error)message(statMsg,'Could not update follower count.','bad');else{message(statMsg,'Follower count updated.','good');$('followerCount').textContent=n.toLocaleString()}});top.append(statForm,statMsg);p.append(top);
+const [adsRes,msgRes]=await Promise.all([sb.from('advertisements').select('id,name,contact,content,link,package,status,created_at').order('created_at',{ascending:false}).limit(100),sb.from('contact_messages').select('id,name,reply_to,message,created_at').order('created_at',{ascending:false}).limit(100)]);const adsHeading=esc('h3','Ad submissions');p.append(adsHeading);if(adsRes.error)p.append(esc('p','Could not load ad submissions.','notice bad'));else if(!adsRes.data.length)p.append(esc('p','No ad submissions yet.','muted'));else adsRes.data.forEach(ad=>{const card=document.createElement('article');card.className='admin-item';card.append(esc('h4',ad.name+' • '+ad.package+' • '+ad.status));card.append(esc('p',ad.content));card.append(esc('p','Contact: '+ad.contact));if(ad.link)card.append(esc('p','Link: '+ad.link));const controls=document.createElement('div');controls.className='admin-actions';if(ad.status==='pending'){for(const [status,label] of [['approved','Approve'],['rejected','Reject']]){const b=document.createElement('button');b.className='btn '+(status==='approved'?'btn-primary':'btn-ghost');b.textContent=label;b.addEventListener('click',async()=>{const {error}=await sb.from('advertisements').update({status}).eq('id',ad.id);if(error)alert('Could not update ad status.');else await adminView()});controls.append(b)}}card.append(controls);p.append(card)});
+const messagesHeading=esc('h3','Contact messages');messagesHeading.style.marginTop='28px';p.append(messagesHeading);if(msgRes.error)p.append(esc('p','Could not load messages.','notice bad'));else if(!msgRes.data.length)p.append(esc('p','No messages yet.','muted'));else msgRes.data.forEach(m=>{const card=document.createElement('article');card.className='admin-item';card.append(esc('h4',m.name));if(m.reply_to)card.append(esc('p','Reply to: '+m.reply_to));card.append(esc('p',m.message));p.append(card)});
+}
+$('adminToggle').addEventListener('click',()=>{if($('adminPanel').classList.contains('hidden'))adminView();else $('adminPanel').classList.add('hidden')});init();loadPublic();
+})();
+</script>
+</body></html>
