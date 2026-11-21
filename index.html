@@ -20,7 +20,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 (()=>{'use strict';
-const SUPABASE_URL='https://jlymeahkzcffyfqixxom.supabase.co';const SUPABASE_PUBLISHABLE_KEY='sb_publishable_cqajw52r0MnMrlckhhTYyg_3t9Pu2Wy';let sb=null;const $=id=>document.getElementById(id);
+const SUPABASE_URL='https://mmpqihttovufjfmeausw.supabase.co';const SUPABASE_PUBLISHABLE_KEY='sb_publishable_WGBXruTJkuhCN0H6dmHbaQ_ZfLzQEmw';let sb=null;const $=id=>document.getElementById(id);
 function message(el,text,kind){el.textContent=text;el.className='notice'+(kind?' '+kind:'')}
 function init(){if(window.supabase){try{sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY)}catch(e){sb=null}}}
 async function loadPublic(){if(!sb)return;try{const {data,error}=await sb.from('site_stats').select('followers').eq('id',1).single();if(!error&&data&&Number.isFinite(Number(data.followers)))$('followerCount').textContent=Number(data.followers).toLocaleString()}catch{};try{const {data}=await sb.from('advertisements').select('name,content,link,package').eq('status','approved').order('created_at',{ascending:false}).limit(12);const host=$('liveAds');host.replaceChildren();(data||[]).forEach(ad=>{const card=document.createElement('article');card.className='card';const title=document.createElement('h3');title.textContent=ad.name;const copy=document.createElement('p');copy.textContent=ad.content;card.append(title,copy);if(ad.link){const a=document.createElement('a');a.href=ad.link;a.target='_blank';a.rel='noopener noreferrer';a.textContent='Visit link';card.append(a)}host.append(card)})}catch{}}
